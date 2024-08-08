@@ -1,0 +1,12 @@
+{% extends "myapp1/base.html" %}
+
+{% block title %}Aprendiz Detail{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">{{ aprendiz.nombre }}</h1>
+    <p><strong>Details:</strong> {{ aprendiz.detalles }}</p>
+    <a class="btn btn-primary" href="{% url 'aprendiz_update' aprendiz.pk %}">Edit</a>
+    <a class="btn btn-secondary" href="{% url 'aprendiz_list' %}">Back to List</a>
+</div>
+{% endblock %}

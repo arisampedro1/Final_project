@@ -1,0 +1,23 @@
+{% extends "myapp1/base.html" %}
+
+{% block title %}Mentores{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-5 text-center margen-superior-grande">List of Mentores</h1>
+    <div class="text-center">
+        <a class="btn btn-primary mb-3" href="{% url 'mentor_create' %}">Create New Mentor</a>
+    </div>
+    <ul class="list-group">
+        {% for mentor in mentores %}
+        <li class="list-group-item text-center">
+            <a href="{% url 'mentor_detail' mentor.pk %}">{{ mentor.nombre }}</a>
+            <a class="btn btn-warning btn-sm float-end mx-4" href="{% url 'mentor_update' mentor.pk %}">Edit</a>
+            <a class="btn btn-danger btn-sm float-end" href="{% url 'mentor_delete' mentor.pk %}">Delete</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item text-center">No mentores available.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

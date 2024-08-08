@@ -1,0 +1,21 @@
+{% extends "myapp1/base.html" %}
+
+{% block title %}Actividades{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">List of Actividades</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'actividad_create' %}">Create New Actividad</a>
+    <ul class="list-group">
+        {% for actividad in actividades %}
+        <li class="list-group-item">
+            <a href="{% url 'actividad_detail' actividad.pk %}">{{ actividad.nombre }}</a>
+            <a class="btn btn-warning btn-sm float-end mx-1" href="{% url 'actividad_update' actividad.pk %}">Edit</a>
+            <a class="btn btn-danger btn-sm float-end" href="{% url 'actividad_delete' actividad.pk %}">Delete</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item">No actividades available.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

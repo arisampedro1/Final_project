@@ -1,0 +1,21 @@
+{% extends "myapp1/base.html" %}
+
+{% block title %}Niveles{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mt-5">List of Niveles</h1>
+    <a class="btn btn-primary mb-5" href="{% url 'nivel_create' %}">Create New Nivel</a>
+    <ul class="list-group">
+        {% for nivel in niveles %}
+        <li class="list-group-item">
+            <a href="{% url 'nivel_detail' nivel.pk %}">{{ nivel.nombre }}</a>
+            <a class="btn btn-warning btn-sm float-end mx-1" href="{% url 'nivel_update' nivel.pk %}">Edit</a>
+            <a class="btn btn-danger btn-sm float-end" href="{% url 'nivel_delete' nivel.pk %}">Delete</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item text-center mt-4">No niveles available.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

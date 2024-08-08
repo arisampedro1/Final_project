@@ -1,0 +1,14 @@
+{% extends "myapp1/base.html" %}
+
+{% block title %}Confirm Delete{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Are you sure you want to delete "{{ actividad.nombre }}"?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+        <a class="btn btn-secondary" href="{% url 'actividad_list' %}">Cancel</a>
+    </form>
+</div>
+{% endblock %}

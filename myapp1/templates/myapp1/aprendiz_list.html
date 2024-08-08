@@ -1,0 +1,21 @@
+{% extends "myapp1/base.html" %}
+
+{% block title %}Aprendices{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">List of Aprendices</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'aprendiz_create' %}">Create New Aprendiz</a>
+    <ul class="list-group">
+        {% for aprendiz in aprendices %}
+        <li class="list-group-item">
+            <a href="{% url 'aprendiz_detail' aprendiz.pk %}">{{ aprendiz.nombre }}</a>
+            <a class="btn btn-warning btn-sm float-end mx-1" href="{% url 'aprendiz_update' aprendiz.pk %}">Edit</a>
+            <a class="btn btn-danger btn-sm float-end" href="{% url 'aprendiz_delete' aprendiz.pk %}">Delete</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item">No aprendices available.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

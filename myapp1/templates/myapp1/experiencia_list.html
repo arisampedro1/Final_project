@@ -1,0 +1,22 @@
+{% extends "myapp1/base.html" %}
+
+{% block title %}Experiencias{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4 text-center mt-5">Experiencias</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'experiencia_create' %}">Create New Experiencia</a>
+    <ul class="list-group">
+        {% for experiencia in experiencias %}
+        <li class="list-group-item">
+            <a href="{% url 'experiencia_detail' experiencia.pk %}">{{ experiencia.nombre }}</a>
+            <a class="btn btn-warning btn-sm float-end mx-1"
+                href="{% url 'experiencia_update' experiencia.pk %}">Edit</a>
+            <a class="btn btn-danger btn-sm float-end" href="{% url 'experiencia_delete' experiencia.pk %}">Delete</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item text-center mt-4">No experiencias available.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "myapp1/base.html" %}
+
+{% block title %}Nivel Detail{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">{{ nivel.nombre }}</h1>
+    <p><strong>Description:</strong> {{ nivel.descripcion }}</p>
+    <a class="btn btn-primary" href="{% url 'nivel_update' nivel.pk %}">Edit</a>
+    <a class="btn btn-secondary" href="{% url 'nivel_list' %}">Back to List</a>
+</div>
+{% endblock %}

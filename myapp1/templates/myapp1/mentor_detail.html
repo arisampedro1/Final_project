@@ -1,0 +1,12 @@
+{% extends "myapp1/base.html" %}
+
+{% block title %}Mentor Detail{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">{{ mentor.nombre }}</h1>
+    <p><strong>Details:</strong> {{ mentor.detalles }}</p>
+    <a class="btn btn-primary" href="{% url 'mentor_update' mentor.pk %}">Edit</a>
+    <a class="btn btn-secondary" href="{% url 'mentor_list' %}">Back to List</a>
+</div>
+{% endblock %}
