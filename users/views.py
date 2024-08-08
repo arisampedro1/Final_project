@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
-from users.forms import UserRegisterForm
+from users.forms import UserCreationForm
 
 def login_request(request):
     msg_login = ""
@@ -20,18 +20,15 @@ def login_request(request):
     return render(request, "users/login.html", {"form": form, "msg_login": msg_login})
 
 def register(request):
-
     msg_register = ""
     if request.method == 'POST':
-
-        form = UserRegisterForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
-            # Si los datos ingresados en el form son válidos, con form.save()
-            # creamos un nuevo user usando esos datos
             form.save()
-            return render(request,"myapp1/base.html")
-        
-        msg_register = "Error en los datos ingresados"
+            return redirect('Login')  # Redirige al login después del registro exitoso
+        else:
+            msg_register = "Error en los datos ingresados"
+    else:
+        form = UserCreationForm()
 
-    form = UserRegisterForm()     
-    return render(request,"users/registro.html" ,  {"form":form, "msg_register": msg_register})
+    return render(request, "users/registro.html", {"form": form, "msg_register": msg_register})
