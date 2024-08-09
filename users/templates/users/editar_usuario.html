@@ -1,24 +1,15 @@
 {% extends 'myapp1/base.html' %}
 
-{% load static %}
+{% block title %} Editar Usuario {% endblock %}
 
-{% block title %} Editar Usuario {% endblock title %}
-
-{% block main %}
-
-<div class="d-flex justify-content-center">
-
+{% block content %}
+<div class="d-flex justify-content-center" style="height: 80vh; align-items: center;">
     <div class="d-flex flex-column">
-
-        <form action="" method="POST">
+        <form method="post">
             {% csrf_token %}
-            <table>
-                {{ form.as_table }}
-            </table>
-            <input type="submit" value="Actualizar">
-
+            {{ form.as_p }} <!-- Alternativamente, usa {{ form.as_p }} -->
+            <input type="submit" value="Actualizar" class="btn btn-primary mt-3">
         </form>
-
     </div>
 </div>
 {% endblock %}
