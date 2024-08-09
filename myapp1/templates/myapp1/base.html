@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>{% block title %}Index {% endblock %}</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{% static 'myapp1/favicon.ico' %}" />
     <link href="{% static 'myapp1/css/styles.css' %}" rel="stylesheet" />
 </head>
 
@@ -41,16 +41,14 @@
                         aria-expanded="false">
                         Cuentas
                     </a>
-                    {% if request.user.is_authenticated %}
                     <ul class="dropdown-menu">
+                        {% if request.user.is_authenticated %}
                         <li><a class="dropdown-item" href="{% url 'Logout' %}">Logout</a></li>
-                    </ul>
-                    {% else %}
-                    <ul class="dropdown-menu">
+                        {% else %}
                         <li><a class="dropdown-item" href="{% url 'Login' %}">Login</a></li>
                         <li><a class="dropdown-item" href="{% url 'Register' %}">Registro</a></li>
+                        {% endif %}
                     </ul>
-                    {% endif %}
                 </div>
 
             </div>
