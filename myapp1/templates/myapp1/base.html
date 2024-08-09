@@ -43,10 +43,15 @@
                     </a>
                     <ul class="dropdown-menu">
                         {% if request.user.is_authenticated %}
-                        <li><a class="dropdown-item" href="{% url 'Logout' %}">Logout</a></li>
+                        <li>
+                            <form action="{% url 'Logout' %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="dropdown-item">Logout</button>
+                            </form>
+                        </li>
                         {% else %}
-                        <li><a class="dropdown-item" href="{% url 'Login' %}">Login</a></li>
-                        <li><a class="dropdown-item" href="{% url 'Register' %}">Registro</a></li>
+                        <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                        <li><a class="dropdown-item" href="{% url 'register' %}">Registro</a></li>
                         {% endif %}
                     </ul>
                 </div>
