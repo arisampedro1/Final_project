@@ -3,14 +3,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from users.forms import UserCreationForm, UserEditForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
-
-def logout_view(request):
-    logout(request)
-    return redirect('Inicio') 
 
 
 def login_request(request):
