@@ -1,6 +1,7 @@
 # myapp1/urls.py
 from django.urls import path
-from . import views
+from myapp1 import views
+
 
 urlpatterns = [
     # Vistas para Experiencia
@@ -38,4 +39,5 @@ urlpatterns = [
     path('nivel/crear/', views.nivel_create, name='nivel_create'),
     path('nivel/<int:pk>/editar/', views.nivel_update, name='nivel_update'),
     path('nivel/<int:pk>/eliminar/', views.nivel_delete, name='nivel_delete'),
+
 ]

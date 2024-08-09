@@ -1,7 +1,14 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
-from users.forms import UserCreationForm
+from users.forms import UserCreationForm, UserEditForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request)
+    return redirect('Inicio') 
+
 
 def login_request(request):
     msg_login = ""
@@ -19,7 +26,7 @@ def login_request(request):
         form = AuthenticationForm()
     return render(request, "users/login.html", {"form": form, "msg_login": msg_login})
 
-def register(request):
+def register(request): 
     msg_register = ""
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -32,3 +39,18 @@ def register(request):
         form = UserCreationForm()
 
     return render(request, "users/registro.html", {"form": form, "msg_register": msg_register})
+
+
+@login_required
+def editar_usuario(request):
+    usuario = request.user
+
+    if request.method == 'POST':
+        formulario = UserEditForm(request.POST, instance=usuario)
+        if formulario.is_valid():
+            formulario.save()
+            return render(request, "myapp1/index.html")
+        else:
+            formulario = UserEditForm(instance = usuario)
+        
+        return render(request, "users/editar_usuario.html", {"form": formulario})

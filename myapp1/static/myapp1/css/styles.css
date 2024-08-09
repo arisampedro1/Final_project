@@ -106,7 +106,7 @@ body {
 }
 
 body {
-  background-color: #f7f7f7;
+  background-color: #fcfcfc;
   /* Color de fondo claro para la página */
   /* Para usar una imagen de fondo en lugar de un color, descomenta las siguientes líneas */
   /* background-image: url('{% static 'myapp1/assets/img/background.jpg' %}'); */
