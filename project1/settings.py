@@ -105,6 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LOGIN_URL = "/users/login/"
+LOGOUT_REDIRECT_URL = 'Inicio'
 
 
 # Internationalization
