@@ -4,6 +4,9 @@ from django.contrib.auth import login, authenticate
 from users.forms import UserCreationForm, UserEditForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy
 
 def logout_view(request):
     logout(request)
@@ -58,3 +61,8 @@ def editar_usuario(request):
     
     # Renderiza la página de edición con el formulario
     return render(request, "users/editar_usuario.html", {"form": formulario})
+
+
+class CambiarPassView(LoginRequiredMixin, PasswordChangeView):
+    template_name = "users/cambiar_pass.html"
+    success_url = reverse_lazy("EditarUsuario")

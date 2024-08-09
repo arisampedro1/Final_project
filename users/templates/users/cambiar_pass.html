@@ -1,0 +1,15 @@
+{% extends 'myapp1/base.html' %}
+
+{% block title %} Editar pass {% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center" style="height: 80vh; align-items: center;">
+    <div class="d-flex flex-column">
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Guardar pass" class="btn btn-primary mt-3">
+        </form>
+    </div>
+</div>
+{% endblock %}
