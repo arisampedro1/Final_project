@@ -7,8 +7,13 @@
     <div class="d-flex flex-column">
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }} <!-- Alternativamente, usa {{ form.as_p }} -->
-            <input type="submit" value="Actualizar" class="btn btn-primary mt-3">
+            <table>
+                {{ form.as_table }}
+            </table>
+            <div class="d-flex justify-content-between mt-3">
+                <a class="btn btn-secondary me-2" href="{% url 'CambiarPass' %}">Cambiar Contraseña</a>
+                <input type="submit" value="Actualizar" class="btn btn-primary">
+            </div>
         </form>
     </div>
 </div>
