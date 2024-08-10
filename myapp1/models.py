@@ -1,6 +1,11 @@
 from django.utils import timezone
 from django.db import models
 
+# Create your models here.
+from django.db import models
+from datetime import timedelta
+from django.utils import timezone
+
 class Experiencia(models.Model):
     TIPOS_DE_EXPERIENCIA = [
         ('coaching', 'Coaching'),
@@ -55,9 +60,9 @@ class Mentor(models.Model):
 class Actividad(models.Model):
     nombre = models.CharField(max_length=30)
     fecha_de_entrega = models.DateField()
-    nivel = models.CharField(max_length=30)  # Cambiado de ForeignKey a CharField
-    experiencia = models.CharField(max_length=40)  # Cambiado de ForeignKey a CharField
-    aprendiz = models.CharField(max_length=40, blank=True, null=True)  # Cambiado de ForeignKey a CharField
+    nivel = models.ForeignKey('NivelDeAprendizaje', on_delete=models.CASCADE, related_name='actividades')  # Si decides tener un modelo separado para niveles de aprendizaje
+    experiencia = models.ForeignKey(Experiencia, on_delete=models.CASCADE, related_name='actividades')
+    aprendiz = models.ForeignKey(Aprendiz, on_delete=models.CASCADE, related_name='actividades')
 
     def __str__(self):
         return self.nombre
