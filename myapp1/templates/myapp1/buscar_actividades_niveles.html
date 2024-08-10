@@ -1,0 +1,34 @@
+{% extends 'myapp1/base.html' %}
+
+{% load static %}
+
+{% block title %}Inicio{% endblock title %}
+
+{% block main %}
+    <!-- Formulario de búsqueda -->
+    <form method="GET" action="{% url 'buscar_actividades_niveles' %}">
+        <input type="text" name="q" placeholder="Buscar" value="{{ query }}">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Mostrar la lista de actividades -->
+    <h2>Actividades</h2>
+    <ul>
+        {% for actividad in actividades %}
+            <li>{{ actividad.nombre }}</li>
+        {% empty %}
+            <li>No se encontraron actividades.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Mostrar la lista de niveles -->
+    <h2>Niveles de Aprendizaje</h2>
+    <ul>
+        {% for nivel in niveles %}
+            <li>{{ nivel.nombre }}</li>
+        {% empty %}
+            <li>No se encontraron niveles de aprendizaje.</li>
+        {% endfor %}
+    </ul>
+{% endblock main %}
+
