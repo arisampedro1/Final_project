@@ -1,11 +1,13 @@
 # myapp1/urls.py
 from django.urls import path
 from myapp1 import views
+from .views import buscar_actividades_niveles
 
 
 urlpatterns = [
     # Vistas para Experiencia
     path('', views.inicio, name='Inicio'),
+    path('buscar-acividades-niveles/', buscar_actividades_niveles, name='buscar_actividades_niveles'),
     path('experiencias/', views.experiencia_list, name='experiencia_list'),
     path('experiencia/<int:pk>/', views.experiencia_detail, name='experiencia_detail'),
     path('experiencia/crear/', views.experiencia_create, name='experiencia_create'),
