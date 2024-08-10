@@ -4,8 +4,15 @@ from myapp1.models import Experiencia, Aprendiz, Mentor, Actividad, NivelDeApren
 class ExperienciaForm(forms.ModelForm):
     class Meta:
         model = Experiencia
-        fields = ['nombre', 'camada']
-        widgets = {'nombre': forms.Select(choices=Experiencia.TIPOS_DE_EXPERIENCIA),}
+        fields = ['nombre', 'descripcion', 'fecha', 'ubicacion', 'duracion', 'camada']
+        widgets = {
+            'nombre': forms.Select(choices=Experiencia.TIPOS_DE_EXPERIENCIA, attrs={'class': 'form-control'}),
+            'descripcion': forms.Textarea(attrs={'class': 'form-control', 'cols': 80, 'rows': 3}),
+            'fecha': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'ubicacion': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ubicación'}),
+            'duracion': forms.TimeInput(attrs={'class': 'form-control', 'type': 'time'}),
+            'camada': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
 
 class AprendizForm(forms.ModelForm):
     class Meta:
@@ -19,6 +26,14 @@ class MentorForm(forms.ModelForm):
     class Meta:
         model = Mentor
         fields = ['nombre', 'apellido', 'email', 'experiencia']
+        widgets ={
+            'experiencia': forms.Select(choices=[
+                ('basico', 'Básico'),
+                ('intermedio', 'Intermedío'),
+                ('experto', 'Expertó')
+
+            ])
+        }
 
 class ActividadForm(forms.ModelForm):
     class Meta:

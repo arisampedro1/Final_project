@@ -1,8 +1,11 @@
 from django.db import models
 
 # Create your models here.
+from django.db import models
+from datetime import timedelta
+from django.utils import timezone
+
 class Experiencia(models.Model):
-    
     TIPOS_DE_EXPERIENCIA = [
         ('coaching', 'Coaching'),
         ('entrenamientos', 'Entrenamientos'),
@@ -10,10 +13,15 @@ class Experiencia(models.Model):
     ]
 
     nombre = models.CharField(max_length=40, choices=TIPOS_DE_EXPERIENCIA)
+    descripcion = models.TextField(blank=True, null=True)  # Permitir campos vacíos
+    fecha = models.DateField(blank=True, null=True)  # Permitir campos vacíos
+    ubicacion = models.CharField(max_length=100, blank=True, null=True)  # Permitir campos vacíos
+    duracion = models.DurationField(blank=True, null=True)  # Permitir campos vacíos
     camada = models.IntegerField()  # Si tiene relevancia para la experiencia
 
     def __str__(self):
         return self.get_nombre_display()
+
 
 class Aprendiz(models.Model):
     NIVELES_DE_APRENDIZAJE = [
@@ -25,20 +33,27 @@ class Aprendiz(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=20)
     email = models.EmailField(max_length=40)
-    experiencia = models.ForeignKey(Experiencia, on_delete=models.CASCADE, related_name='aprendices')
-    nivel = models.CharField(max_length=10, choices=NIVELES_DE_APRENDIZAJE, default='iniciado')
+    experiencia = models.CharField(max_length=40)
+    nivel = models.CharField(max_length=10, choices=NIVELES_DE_APRENDIZAJE)
 
     def __str__(self):
-        return f"{self.nombre} {self.apellido}"
+        return f"{self.nombre} {self.apellido} {self.email} {self.experiencia} {self.nivel}"
 
 class Mentor(models.Model):
+    EXPERIENCIA_NIVELES = [
+        ('basico', 'Básico'),
+        ('intermedio', 'Intermedio'),
+        ('experto', 'Experto'),
+    ]
+    
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=20)
     email = models.EmailField(max_length=40)
-    experiencia = models.ForeignKey(Experiencia, on_delete=models.CASCADE, related_name='mentores')
+    experiencia = models.CharField(max_length=10, choices=EXPERIENCIA_NIVELES)
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
+
 
 class Actividad(models.Model):
     nombre = models.CharField(max_length=30)

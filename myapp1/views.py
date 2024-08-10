@@ -72,9 +72,10 @@ def aprendiz_list(request):
 def aprendiz_detail(request, pk):
     try:
         aprendiz = Aprendiz.objects.get(pk=pk)
+        print(aprendiz)
     except Aprendiz.DoesNotExist:
         return HttpResponseNotFound("Aprendiz no encontrado")
-    return render(request, 'aprendiz_detail.html', {'aprendiz': aprendiz})
+    return render(request, 'myapp1/aprendiz_detail.html', {'aprendiz': aprendiz})
 
 @login_required
 def aprendiz_create(request):

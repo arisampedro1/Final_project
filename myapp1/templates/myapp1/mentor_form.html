@@ -1,15 +1,27 @@
 {% extends "myapp1/base.html" %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}Crear Nuevo Mentor{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="my-4">{{ title }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">{{ title }}</button>
-    </form>
-    <a class="btn btn-secondary" href="{% url 'mentor_list' %}">Cancel</a>
+<div class="container min-vh-100 d-flex flex-column justify-content-center">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-light">
+                <div class="card-body">
+                    <h1 class="card-title mb-4 text-center">Crear Nuevo Mentor</h1>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary">Crear</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a class="btn btn-secondary" href="{% url 'mentor_list' %}">Cancelar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
