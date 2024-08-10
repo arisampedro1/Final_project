@@ -38,13 +38,13 @@ class MentorForm(forms.ModelForm):
 class ActividadForm(forms.ModelForm):
     class Meta:
         model = Actividad
-        fields = ['nombre', 'fecha_de_entrega', 'nivel', 'experiencia', 'aprendiz']
+        fields = ['nombre', 'nivel', 'experiencia', 'aprendiz', 'fecha_de_entrega']
         widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'nivel': forms.TextInput(attrs={'class': 'form-control'}),
+            'experiencia': forms.TextInput(attrs={'class': 'form-control'}),
+            'aprendiz': forms.TextInput(attrs={'class': 'form-control'}),
             'fecha_de_entrega': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'nivel': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nivel'}),
-            'experiencia': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Experiencia'}),
-            'aprendiz': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Aprendiz'}),
         }
 
 class NivelDeAprendizajeForm(forms.ModelForm):

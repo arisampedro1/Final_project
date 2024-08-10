@@ -57,22 +57,18 @@ class Mentor(models.Model):
         return f"{self.nombre} {self.apellido}"
 
 
-class Actividad(models.Model):
-    nombre = models.CharField(max_length=30)
-    fecha_de_entrega = models.DateField()
-    nivel = models.ForeignKey('NivelDeAprendizaje', on_delete=models.CASCADE, related_name='actividades')
-    experiencia = models.ForeignKey(Experiencia, on_delete=models.CASCADE, related_name='actividades')
-    aprendiz = models.ForeignKey(Aprendiz, on_delete=models.CASCADE, related_name='actividades', default="")
-
-    def __str__(self):
-        return self.nombre
-
-
 class NivelDeAprendizaje(models.Model):
     nombre = models.CharField(max_length=30)
-    descripcion = models.TextField(blank=True, null=True)  # Descripción opcional del nivel
-    fecha_creacion = models.DateTimeField(default=timezone.now)  # Fecha en que se creó el nivel
-    activo = models.BooleanField(default=True)  # Indica si el nivel está activo
+    descripcion = models.TextField(blank=True, null=True)
+    fecha_creacion = models.DateTimeField(default=timezone.now)
+    activo = models.BooleanField(default=True)
 
     def __str__(self):
         return self.nombre
+
+class Actividad(models.Model):
+    nombre = models.CharField(max_length=255)
+    nivel = models.CharField(max_length=30)  # Campo de texto en lugar de ForeignKey
+    experiencia = models.CharField(max_length=255)  # Campo de texto en lugar de ForeignKey
+    aprendiz = models.CharField(max_length=255)  # Campo de texto en lugar de ForeignKey
+    fecha_de_entrega = models.DateTimeField(default=timezone.now)
