@@ -3,27 +3,26 @@
 {% block title %}Niveles{% endblock %}
 
 {% block content %}
-<div class="container my-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <h1 class="text-center mb-4">Lista de Niveles</h1>
-            <div class="text-center mb-4">
-                <a class="btn btn-primary" href="{% url 'nivel_create' %}">Crear Nuevo Nivel</a>
-            </div>
-            <ul class="list-group">
-                {% for nivel in niveles %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="{% url 'nivel_detail' nivel.pk %}" class="btn btn-link">{{ nivel.nombre }}</a>
-                    <div>
-                        <a class="btn btn-warning btn-sm mx-1" href="{% url 'nivel_update' nivel.pk %}">Editar</a>
-                        <a class="btn btn-danger btn-sm" href="{% url 'nivel_delete' nivel.pk %}">Eliminar</a>
-                    </div>
-                </li>
-                {% empty %}
-                <li class="list-group-item text-center">No hay niveles disponibles.</li>
-                {% endfor %}
-            </ul>
+<div class="container d-flex flex-column justify-content-center" style="min-height: 80vh;">
+    <div class="text-center mb-4">
+        <h1 class="text-center mb-4">Lista de Niveles</h1>
+        <div class="text-center mb-4">
+            <a class="btn btn-primary" href="{% url 'nivel_create' %}">Crear Nuevo Nivel</a>
         </div>
+        <ul class="list-group">
+            {% for nivel in niveles %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{% url 'nivel_detail' nivel.pk %}" class="btn btn-link">{{ nivel.nombre }}</a>
+                <div>
+                    <a class="btn btn-warning btn-sm mx-1" href="{% url 'nivel_update' nivel.pk %}">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'nivel_delete' nivel.pk %}">Eliminar</a>
+                </div>
+            </li>
+            {% empty %}
+            <li class="list-group-item text-center">No hay niveles disponibles.</li>
+            {% endfor %}
+        </ul>
     </div>
+</div>
 </div>
 {% endblock %}

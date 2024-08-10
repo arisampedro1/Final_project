@@ -1,15 +1,28 @@
 {% extends "myapp1/base.html" %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}Creando Nuevo Aprendizaje{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="my-4">{{ title }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">{{ title }}</button>
-    </form>
-    <a class="btn btn-secondary" href="{% url 'nivel_list' %}">Cancel</a>
+<div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-8 col-lg-6">
+        <h1 class="text-center mb-4">Crear Nuevo Nivel</h1>
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <div class="row mt-4">
+                        <div class="col-6 text-start">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                        <div class="col-6 text-end">
+                            <a class="btn btn-secondary" href="{% url 'nivel_list' %}">Cancelar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

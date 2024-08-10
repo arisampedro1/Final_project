@@ -1,59 +1,63 @@
 {% extends "myapp1/base.html" %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2 class="text-center mb-4">
-        {% if form.instance.pk %}Editar{% else %}Crear{% endif %} Actividad
-    </h2>
+<div class="container my-5">
+    <div class="row min-vh-100 justify-content-center align-items-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-light">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">
+                        {% if form.instance.pk %}Editando Actividad{% else %}Crear Actividad{% endif %}
+                    </h2>
 
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <form method="post" novalidate>
-                {% csrf_token %}
+                    <form method="post" novalidate>
+                        {% csrf_token %}
 
-                <!-- Mostrar errores no específicos del campo -->
-                <div class="mb-3">
-                    {{ form.non_field_errors }}
+                        <!-- Mostrar errores no específicos del campo -->
+                        <div class="mb-3">
+                            {{ form.non_field_errors }}
+                        </div>
+
+                        <!-- Mostrar cada campo del formulario -->
+                        <div class="mb-3">
+                            {{ form.nombre.label_tag }}
+                            {{ form.nombre }}
+                            {{ form.nombre.errors }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.fecha_de_entrega.label_tag }}
+                            {{ form.fecha_de_entrega }}
+                            {{ form.fecha_de_entrega.errors }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.nivel.label_tag }}
+                            {{ form.nivel }}
+                            {{ form.nivel.errors }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.experiencia.label_tag }}
+                            {{ form.experiencia }}
+                            {{ form.experiencia.errors }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.aprendiz.label_tag }}
+                            {{ form.aprendiz }}
+                            {{ form.aprendiz.errors }}
+                        </div>
+
+                        <!-- Botón de enviar -->
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                {% if form.instance.pk %}Actualizar{% else %}Crear{% endif %}
+                            </button>
+                        </div>
+                    </form>
                 </div>
-
-                <!-- Mostrar cada campo del formulario -->
-                <div class="mb-3">
-                    {{ form.nombre.label_tag }}
-                    {{ form.nombre }}
-                    {{ form.nombre.errors }}
-                </div>
-
-                <div class="mb-3">
-                    {{ form.fecha_de_entrega.label_tag }}
-                    {{ form.fecha_de_entrega }}
-                    {{ form.fecha_de_entrega.errors }}
-                </div>
-
-                <div class="mb-3">
-                    {{ form.nivel.label_tag }}
-                    {{ form.nivel }}
-                    {{ form.nivel.errors }}
-                </div>
-
-                <div class="mb-3">
-                    {{ form.experiencia.label_tag }}
-                    {{ form.experiencia }}
-                    {{ form.experiencia.errors }}
-                </div>
-
-                <div class="mb-3">
-                    {{ form.aprendiz.label_tag }}
-                    {{ form.aprendiz }}
-                    {{ form.aprendiz.errors }}
-                </div>
-
-                <!-- Botón de enviar -->
-                <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-primary">
-                        {% if form.instance.pk %}Actualizar{% else %}Crear{% endif %}
-                    </button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

@@ -245,7 +245,7 @@ def nivel_create(request):
             return redirect('nivel_list')
     else:
         form = NivelDeAprendizajeForm()
-    return render(request, 'myapp1/nivel_form.html', {'form': form, 'title': 'Crear Nivel de Aprendizaje'})
+    return render(request, 'myapp1/nivel_form.html', {'form': form, 'title': 'Crear Nuevo Nivel'})
 
 @login_required
 def nivel_update(request, pk):

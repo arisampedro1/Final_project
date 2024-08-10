@@ -1,18 +1,23 @@
 {% extends "myapp1/base.html" %}
 
 {% block content %}
-<div class="container mt-4">
-    <h1 class="mb-4">Detalle de Actividad</h1>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">{{ actividad.titulo }}</h5>
-            <p class="card-text"><strong>Nivel:</strong> {{ actividad.nivel }}</p>
-            <p class="card-text"><strong>Experiencia:</strong> {{ actividad.experiencia }}</p>
-            <p class="card-text"><strong>Aprendiz:</strong> {{ actividad.aprendiz }}</p>
-            <p class="card-text"><strong>Detalles:</strong></p>
-            <pre>{{ actividad.detalles|json_script:"detalles" }}</pre>
+<div class="container-fluid d-flex align-items-center min-vh-100">
+    <!-- Usamos d-flex y min-vh-100 para centrar verticalmente -->
+    <div class="row justify-content-center w-100">
+        <div class="col-md-8">
+            <h1 class="text-center mb-4">Detalle de Actividad</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ actividad.titulo }}</h5>
+                    <p class="card-text"><strong>Nivel:</strong> {{ actividad.nivel }}</p>
+                    <p class="card-text"><strong>Experiencia:</strong> {{ actividad.experiencia }}</p>
+                    <p class="card-text"><strong>Aprendiz:</strong> {{ actividad.aprendiz }}</p>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'actividad_list' %}" class="btn btn-primary">Volver a la lista</a>
+            </div>
         </div>
     </div>
-    <a href="{% url 'actividad_list' %}" class="btn btn-primary mt-3">Volver a la lista</a>
 </div>
 {% endblock %}
