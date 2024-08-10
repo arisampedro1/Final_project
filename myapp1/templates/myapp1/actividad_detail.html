@@ -1,13 +1,23 @@
 {% extends "myapp1/base.html" %}
 
-{% block title %}Actividad Detail{% endblock %}
-
 {% block content %}
-<div class="container">
-    <h1 class="my-4">{{ actividad.nombre }}</h1>
-    <p><strong>Description:</strong> {{ actividad.descripcion }}</p>
-    <p><strong>Fecha:</strong> {{ actividad.fecha }}</p>
-    <a class="btn btn-primary" href="{% url 'actividad_update' actividad.pk %}">Edit</a>
-    <a class="btn btn-secondary" href="{% url 'actividad_list' %}">Back to List</a>
+<div class="container-fluid d-flex align-items-center min-vh-100">
+    <!-- Usamos d-flex y min-vh-100 para centrar verticalmente -->
+    <div class="row justify-content-center w-100">
+        <div class="col-md-8">
+            <h1 class="text-center mb-4">Detalle de Actividad</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ actividad.titulo }}</h5>
+                    <p class="card-text"><strong>Nivel:</strong> {{ actividad.nivel }}</p>
+                    <p class="card-text"><strong>Experiencia:</strong> {{ actividad.experiencia }}</p>
+                    <p class="card-text"><strong>Aprendiz:</strong> {{ actividad.aprendiz }}</p>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'actividad_list' %}" class="btn btn-primary">Volver a la lista</a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

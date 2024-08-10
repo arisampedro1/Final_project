@@ -39,8 +39,19 @@ class ActividadForm(forms.ModelForm):
     class Meta:
         model = Actividad
         fields = ['nombre', 'fecha_de_entrega', 'nivel', 'experiencia', 'aprendiz']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
+            'fecha_de_entrega': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'nivel': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nivel'}),
+            'experiencia': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Experiencia'}),
+            'aprendiz': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Aprendiz'}),
+        }
 
 class NivelDeAprendizajeForm(forms.ModelForm):
     class Meta:
         model = NivelDeAprendizaje
-        fields = ['nombre']
+        fields = ['nombre', 'descripcion', 'activo']
+        widgets = {
+            'descripcion': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'activo': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+        }
