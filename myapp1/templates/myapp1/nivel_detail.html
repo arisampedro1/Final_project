@@ -1,12 +1,38 @@
 {% extends "myapp1/base.html" %}
 
-{% block title %}Nivel Detail{% endblock %}
+{% block title %}Detalles del Nivel{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="my-4">{{ nivel.nombre }}</h1>
-    <p><strong>Description:</strong> {{ nivel.descripcion }}</p>
-    <a class="btn btn-primary" href="{% url 'nivel_update' nivel.pk %}">Edit</a>
-    <a class="btn btn-secondary" href="{% url 'nivel_list' %}">Back to List</a>
+<div class="container my-5">
+    <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="col-md-8">
+            <!-- Tarjeta con detalles del nivel -->
+            <div class="card shadow-sm border-light">
+                <div class="card-body text-center">
+                    <!-- Título de la tarjeta -->
+                    <h1 class="card-title mb-4">Detalles del Nivel</h1>
+
+                    <!-- Nombre del nivel -->
+                    <h2 class="mb-4">{{ nivel.nombre }}</h2>
+
+                    <!-- Descripción del nivel -->
+                    <p class="card-text mb-4">
+                        <strong>Description:</strong>
+                        {% if nivel.descripcion %}
+                        {{ nivel.descripcion }}
+                        {% else %}
+                        No description provided.
+                        {% endif %}
+                    </p>
+
+                    <!-- Botones de acción -->
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-primary mx-2" href="{% url 'nivel_update' nivel.pk %}">Edit</a>
+                        <a class="btn btn-secondary mx-2" href="{% url 'nivel_list' %}">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

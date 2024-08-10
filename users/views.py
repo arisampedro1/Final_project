@@ -3,11 +3,10 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from users.forms import UserCreationForm, UserEditForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
-
-def logout_view(request):
-    logout(request)
-    return redirect('Inicio') 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy
+from users.models import Avatar
 
 
 def login_request(request):
@@ -46,11 +45,24 @@ def editar_usuario(request):
     usuario = request.user
 
     if request.method == 'POST':
-        formulario = UserEditForm(request.POST, instance=usuario)
+        formulario = UserEditForm(request.POST, request.FILES, instance=usuario)
         if formulario.is_valid():
+            if formulario.cleaned_data.get('imagen'):
+                avatar = Avatar(user=usuario, imagen=formulario.cleaned_data.get("imagen"))
+                avatar.save()
+                
             formulario.save()
             return render(request, "myapp1/index.html")
         else:
-            formulario = UserEditForm(instance = usuario)
-        
-        return render(request, "users/editar_usuario.html", {"form": formulario})
+            # Si el formulario no es válido, renderiza la misma página con errores
+            return render(request, "users/editar_usuario.html", {"form": formulario})
+    else:
+        formulario = UserEditForm(instance=usuario)
+    
+    # Renderiza la página de edición con el formulario
+    return render(request, "users/editar_usuario.html", {"form": formulario})
+
+
+class CambiarPassView(LoginRequiredMixin, PasswordChangeView):
+    template_name = "users/cambiar_pass.html"
+    success_url = reverse_lazy("Inicio")

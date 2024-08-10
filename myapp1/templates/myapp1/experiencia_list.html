@@ -3,25 +3,39 @@
 {% block title %}Experiencias{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="my-4 text-center mt-5">Experiencias</h1>
-    <div class="text-center mb-3">
-        <a class="btn btn-primary" href="{% url 'experiencia_create' %}">Create New Experiencia</a>
+<div class="container d-flex flex-column justify-content-center" style="min-height: 80vh;">
+    <div class="text-center mb-4">
+        <h1 class="my-4">Lista de Experiencias</h1>
+        <a class="btn btn-primary mt-3" href="{% url 'experiencia_create' %}">Crear Nueva Experiencia</a>
     </div>
-    <ul class="list-group">
+    <div class="row">
         {% for experiencia in experiencias %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="{% url 'experiencia_detail' experiencia.pk %}" class="text-decoration-none">{{ experiencia.nombre}}
-
-            </a>
-            <div>
-                <a class="btn btn-warning btn-sm me-2" href="{% url 'experiencia_update' experiencia.pk %}">Edit</a>
-                <a class="btn btn-danger btn-sm" href="{% url 'experiencia_delete' experiencia.pk %}">Delete</a>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ experiencia.nombre }}</h5>
+                    <p class="card-text">
+                        <strong>Descripción:</strong> {{ experiencia.descripcion }}<br>
+                        <strong>Fecha:</strong> {{ experiencia.fecha }}<br>
+                        <strong>Ubicación:</strong> {{ experiencia.ubicacion }}<br>
+                        <strong>Duración:</strong> {{ experiencia.duracion }}
+                    </p>
+                    <a class="btn btn-warning btn-sm" href="{% url 'experiencia_update' experiencia.pk %}">Editar</a>
+                    <a class="btn btn-danger btn-sm float-end"
+                        href="{% url 'experiencia_delete' experiencia.pk %}">Eliminar</a>
+                </div>
+                <div class="card-footer text-center">
+                    <a class="btn btn-info btn-sm" href="{% url 'experiencia_detail' experiencia.pk %}">Detalles</a>
+                </div>
             </div>
-        </li>
+        </div>
         {% empty %}
-        <li class="list-group-item text-center mt-4">No experiencias available.</li>
+        <div class="col-12">
+            <div class="alert alert-info text-center" role="alert">
+                No hay experiencias disponibles.
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 </div>
 {% endblock %}

@@ -3,13 +3,17 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="my-4">{{ title }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">{{ title }}</button>
-    </form>
-    <a class="btn btn-secondary" href="{% url 'actividad_list' %}">Cancel</a>
+<div class="container d-flex flex-column align-items-center justify-content-center min-vh-100">
+    <div class="col-md-6 col-lg-4">
+        <h1 class="my-4 text-center">{{ title }}</h1>
+        <form method="post" class="bg-light p-4 rounded shadow-sm">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">{{ title }}</button>
+                <a class="btn btn-secondary" href="{% url 'actividad_list' %}">Cancel</a>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

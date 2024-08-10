@@ -72,9 +72,10 @@ def aprendiz_list(request):
 def aprendiz_detail(request, pk):
     try:
         aprendiz = Aprendiz.objects.get(pk=pk)
+        print(aprendiz)
     except Aprendiz.DoesNotExist:
         return HttpResponseNotFound("Aprendiz no encontrado")
-    return render(request, 'aprendiz_detail.html', {'aprendiz': aprendiz})
+    return render(request, 'myapp1/aprendiz_detail.html', {'aprendiz': aprendiz})
 
 @login_required
 def aprendiz_create(request):
@@ -241,10 +242,10 @@ def nivel_create(request):
         form = NivelDeAprendizajeForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('nivel_list')
+            return redirect('nivel_list')  # Cambia 'nivel_list' al nombre de tu URL para la lista de niveles
     else:
         form = NivelDeAprendizajeForm()
-    return render(request, 'myapp1/nivel_form.html', {'form': form, 'title': 'Crear Nivel de Aprendizaje'})
+    return render(request, 'myapp1/nivel_form.html', {'form': form, 'title': 'Crear Nuevo Nivel'})
 
 @login_required
 def nivel_update(request, pk):
