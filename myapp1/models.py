@@ -1,4 +1,4 @@
-from datetime import timezone
+from django.utils import timezone
 from django.db import models
 
 class Experiencia(models.Model):
@@ -66,7 +66,7 @@ class Actividad(models.Model):
 class NivelDeAprendizaje(models.Model):
     nombre = models.CharField(max_length=30)
     descripcion = models.TextField(blank=True, null=True)  # Descripción opcional del nivel
-    fecha_creacion = models.DateTimeField(default=timezone)  # Fecha en que se creó el nivel
+    fecha_creacion = models.DateTimeField(default=timezone.now)  # Fecha en que se creó el nivel
     activo = models.BooleanField(default=True)  # Indica si el nivel está activo
 
     def __str__(self):
