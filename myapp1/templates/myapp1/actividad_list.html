@@ -3,19 +3,28 @@
 {% block title %}Actividades{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="my-4">List of Actividades</h1>
-    <a class="btn btn-primary mb-3" href="{% url 'actividad_create' %}">Create New Actividad</a>
-    <ul class="list-group">
-        {% for actividad in actividades %}
-        <li class="list-group-item">
-            <a href="{% url 'actividad_detail' actividad.pk %}">{{ actividad.nombre }}</a>
-            <a class="btn btn-warning btn-sm float-end mx-1" href="{% url 'actividad_update' actividad.pk %}">Edit</a>
-            <a class="btn btn-danger btn-sm float-end" href="{% url 'actividad_delete' actividad.pk %}">Delete</a>
-        </li>
-        {% empty %}
-        <li class="list-group-item">No actividades available.</li>
-        {% endfor %}
-    </ul>
+<div class="container d-flex flex-column justify-content-center min-vh-100">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center mb-4">Lista de Actividades</h1>
+            <div class="text-center mb-4">
+                <a class="btn btn-primary" href="{% url 'actividad_create' %}">Crear Nueva Actividad</a>
+            </div>
+            <ul class="list-group">
+                {% for actividad in actividades %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{% url 'actividad_detail' actividad.pk %}" class="btn btn-link">{{ actividad.nombre }}</a>
+                    <div>
+                        <a class="btn btn-warning btn-sm mx-1"
+                            href="{% url 'actividad_update' actividad.pk %}">Editar</a>
+                        <a class="btn btn-danger btn-sm" href="{% url 'actividad_delete' actividad.pk %}">Eliminar</a>
+                    </div>
+                </li>
+                {% empty %}
+                <li class="list-group-item text-center">No hay actividades disponibles.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </div>
 {% endblock %}

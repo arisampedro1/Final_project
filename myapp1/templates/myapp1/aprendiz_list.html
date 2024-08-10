@@ -3,19 +3,33 @@
 {% block title %}Aprendices{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="my-4">List of Aprendices</h1>
-    <a class="btn btn-primary mb-3" href="{% url 'aprendiz_create' %}">Create New Aprendiz</a>
-    <ul class="list-group">
+<div class="container d-flex flex-column justify-content-center" style="min-height: 80vh;">
+    <div class="text-center mb-4">
+        <h1>Lista de Aprendices</h1>
+        <a class="btn btn-primary mt-3" href="{% url 'aprendiz_create' %}">Crear Nuevo Aprendiz</a>
+    </div>
+    <div class="row">
         {% for aprendiz in aprendices %}
-        <li class="list-group-item">
-            <a href="{% url 'aprendiz_detail' aprendiz.pk %}">{{ aprendiz.nombre }}</a>
-            <a class="btn btn-warning btn-sm float-end mx-1" href="{% url 'aprendiz_update' aprendiz.pk %}">Edit</a>
-            <a class="btn btn-danger btn-sm float-end" href="{% url 'aprendiz_delete' aprendiz.pk %}">Delete</a>
-        </li>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ aprendiz.nombre }}</h5>
+                    <a class="btn btn-warning btn-sm" href="{% url 'aprendiz_update' aprendiz.pk %}">Editar</a>
+                    <a class="btn btn-danger btn-sm float-end"
+                        href="{% url 'aprendiz_delete' aprendiz.pk %}">Eliminar</a>
+                </div>
+                <div class="card-footer text-center">
+                    <a class="btn btn-info btn-sm" href="{% url 'aprendiz_detail' aprendiz.pk %}">Detalles</a>
+                </div>
+            </div>
+        </div>
         {% empty %}
-        <li class="list-group-item">No aprendices available.</li>
+        <div class="col-12">
+            <div class="alert alert-info text-center" role="alert">
+                No hay aprendices disponibles.
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 </div>
 {% endblock %}
