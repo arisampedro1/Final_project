@@ -242,7 +242,7 @@ def nivel_create(request):
         form = NivelDeAprendizajeForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('nivel_list')
+            return redirect('nivel_list')  # Cambia 'nivel_list' al nombre de tu URL para la lista de niveles
     else:
         form = NivelDeAprendizajeForm()
     return render(request, 'myapp1/nivel_form.html', {'form': form, 'title': 'Crear Nuevo Nivel'})
