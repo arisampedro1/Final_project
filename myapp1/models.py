@@ -1,9 +1,6 @@
 from django.db import models
 
 # Create your models here.
-from django.db import models
-from datetime import timedelta
-from django.utils import timezone
 
 class Experiencia(models.Model):
     TIPOS_DE_EXPERIENCIA = [
