@@ -6,7 +6,7 @@
 <div class="d-flex justify-content-center" style="height: 80vh; align-items: center;">
     <div class="d-flex flex-column p-4 border rounded shadow-sm bg-light">
         <h2 class="mb-4 text-center">Editar Usuario</h2>
-        <form method="post">
+        <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <table class="mb-3 w-100">
                 {{ form.as_table }}

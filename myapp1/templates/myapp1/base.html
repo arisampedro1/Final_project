@@ -23,6 +23,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="{% url 'Inicio' %}">Inicio</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link text-white"
                             href="{% url 'experiencia_list' %}">Experiencias</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="{% url 'aprendiz_list' %}">Aprendices</a>
@@ -31,13 +34,11 @@
                     <li class="nav-item"><a class="nav-link text-white"
                             href="{% url 'actividad_list' %}">Actividades</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="{% url 'nivel_list' %}">Niveles</a></li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary" href="{% url 'Inicio' %}">Inicio</a>
-                    </li>
                 </ul>
 
                 {# DROPDOWN PARA LA CUENTA DE USUARIO #}
                 {% if request.user.is_authenticated %}
+                <img src="{{request.user.avatar.imagen.url}}" alt="" height="45">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
