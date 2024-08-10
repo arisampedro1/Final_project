@@ -273,3 +273,22 @@ def nivel_delete(request, pk):
         nivel.delete()
         return redirect('nivel_list')
     return render(request, 'myapp1/nivel_confirm_delete.html', {'nivel': nivel})
+
+@login_required
+def buscar_actividades_niveles(request):
+    query = request.GET.get('q', '')
+
+    if query:
+        # Filtrar las actividades y niveles que coincidan con la búsqueda
+        actividades = Actividad.objects.filter(nombre__icontains=query)
+        niveles = NivelDeAprendizaje.objects.filter(nombre__icontains=query)
+    else:
+        # Si no hay búsqueda, mostrar todas las actividades y niveles
+        actividades = Actividad.objects.all()
+        niveles = NivelDeAprendizaje.objects.all()
+    
+    return render(request, "myapp1/index.html", {
+        'actividades': actividades,
+        'niveles': niveles,
+        'query': query
+    })

@@ -17,6 +17,51 @@
     <div class="bg-circle-4 bg-circle"></div>
 </header>
 <!-- Content section 1-->
+ <!-- Search section -->
+<section id="search" class="my-5">
+    <div class="container px-5">
+        <form method="GET" action="{% url 'buscar_actividades_niveles' %}">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Buscar actividades o niveles..." value="{{ query }}">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Results section -->
+{% if query %}
+<section id="results" class="my-5">
+    <div class="container px-5">
+        <h2>Resultados de búsqueda para "{{ query }}":</h2>
+        
+        <!-- Resultados de Actividades -->
+        <h3>Actividades</h3>
+        {% if actividades %}
+            <ul>
+                {% for actividad in actividades %}
+                    <li>{{ actividad.nombre }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No se encontraron actividades.</p>
+        {% endif %}
+        
+        <!-- Resultados de Niveles de Aprendizaje -->
+        <h3>Niveles de Aprendizaje</h3>
+        {% if niveles %}
+            <ul>
+                {% for nivel in niveles %}
+                    <li>{{ nivel.nombre }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No se encontraron niveles de aprendizaje.</p>
+        {% endif %}
+    </div>
+</section>
+{% endif %}
+
 <section id="scroll">
     <div class="container px-5">
         <div class="row gx-5 align-items-center">
