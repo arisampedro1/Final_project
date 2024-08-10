@@ -6,3 +6,4 @@ pycache/
 Pipfile
 Pipfile.lock
 media/**
+db.sqlite3
