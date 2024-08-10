@@ -49,7 +49,6 @@ def editar_usuario(request):
         if formulario.is_valid():
             if formulario.cleaned_data.get('imagen'):
                 avatar = Avatar(user=usuario, imagen=formulario.cleaned_data.get("imagen"))
-                #usuario.avatar.imagen = formulario.cleaned_data.get('imagen')
                 avatar.save()
                 
             formulario.save()
