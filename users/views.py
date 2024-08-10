@@ -60,4 +60,4 @@ def editar_usuario(request):
 
 class CambiarPassView(LoginRequiredMixin, PasswordChangeView):
     template_name = "users/cambiar_pass.html"
-    success_url = reverse_lazy("EditarUsuario")
+    success_url = reverse_lazy("Inicio")
