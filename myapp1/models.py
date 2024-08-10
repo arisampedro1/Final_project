@@ -60,9 +60,9 @@ class Mentor(models.Model):
 class Actividad(models.Model):
     nombre = models.CharField(max_length=30)
     fecha_de_entrega = models.DateField()
-    nivel = models.ForeignKey('NivelDeAprendizaje', on_delete=models.CASCADE, related_name='actividades')  # Si decides tener un modelo separado para niveles de aprendizaje
+    nivel = models.ForeignKey('NivelDeAprendizaje', on_delete=models.CASCADE, related_name='actividades')
     experiencia = models.ForeignKey(Experiencia, on_delete=models.CASCADE, related_name='actividades')
-    aprendiz = models.ForeignKey(Aprendiz, on_delete=models.CASCADE, related_name='actividades')
+    aprendiz = models.ForeignKey(Aprendiz, on_delete=models.CASCADE, related_name='actividades', default="")
 
     def __str__(self):
         return self.nombre
