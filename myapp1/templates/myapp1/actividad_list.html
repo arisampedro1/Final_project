@@ -1,9 +1,17 @@
 {% extends "myapp1/base.html" %}
 
+{% load static %}
+
 {% block title %}Actividades{% endblock %}
 
 {% block content %}
 <div class="container d-flex flex-column justify-content-center min-vh-100">
+    <!-- Sección de Imagen -->
+    <div class="text-center mb-4">
+        <img src="{% static 'myapp1/assets/img/ari.jpg' %}" alt="Descripción de la imagen" class="img-fluid rounded">
+    </div>
+
+    <!-- Sección de Lista de Actividades -->
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h1 class="text-center mb-4">Lista de Actividades</h1>

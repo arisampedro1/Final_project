@@ -1,9 +1,17 @@
 {% extends "myapp1/base.html" %}
 
+{% load static %}
+
 {% block title %}Aprendices{% endblock %}
 
 {% block content %}
 <div class="container d-flex flex-column justify-content-center" style="min-height: 80vh;">
+    <!-- Sección de Imagen -->
+    <div class="text-center mb-4">
+        <img src="{% static 'myapp1/assets/img/ari2.jpg' %}" alt="Descripción de la imagen" class="img-fluid rounded" />
+    </div>
+
+    <!-- Sección de Lista de Aprendices -->
     <div class="text-center mb-4">
         <h1>Lista de Aprendices</h1>
         <a class="btn btn-primary mt-3" href="{% url 'aprendiz_create' %}">Crear Nuevo Aprendiz</a>
@@ -15,8 +23,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ aprendiz.nombre }}</h5>
                     <a class="btn btn-warning btn-sm" href="{% url 'aprendiz_update' aprendiz.pk %}">Editar</a>
-                    <a class="btn btn-danger btn-sm float-end"
-                        href="{% url 'aprendiz_delete' aprendiz.pk %}">Eliminar</a>
+                    <a class="btn btn-danger btn-sm float-end" href="{% url 'aprendiz_delete' aprendiz.pk %}">Eliminar</a>
                 </div>
                 <div class="card-footer text-center">
                     <a class="btn btn-info btn-sm" href="{% url 'aprendiz_detail' aprendiz.pk %}">Detalles</a>
