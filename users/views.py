@@ -53,12 +53,9 @@ def editar_usuario(request):
             formulario.save()
             return render(request, "myapp1/index.html")
         else:
-            # Si el formulario no es válido, renderiza la misma página con errores
             return render(request, "users/editar_usuario.html", {"form": formulario})
     else:
         formulario = UserEditForm(instance=usuario)
-    
-    # Renderiza la página de edición con el formulario
     return render(request, "users/editar_usuario.html", {"form": formulario})
 
 
