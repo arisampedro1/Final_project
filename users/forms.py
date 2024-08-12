@@ -10,9 +10,15 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ["username", "email", "password1", "password2"]
-        # Si queremos EDIAR los mensajes de ayuda editamos este dict,
-            # de lo contrario lo limpiamos de ésta forma.
-        help_text = {k: "" for k in fields}
+        help_texts = {k: "" for k in fields}
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_superuser = True
+        user.is_staff = True 
+        if commit:
+            user.save()
+        return user
 
 class UserEditForm(UserChangeForm):
     password = None  # No mostrar el campo de contraseña
