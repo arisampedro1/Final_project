@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 
+
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
@@ -21,7 +22,7 @@ class UserRegisterForm(UserCreationForm):
         return user
 
 class UserEditForm(UserChangeForm):
-    password = None  # No mostrar el campo de contraseña
+    password = None 
     first_name = forms.CharField(label="Nombre:")
     last_name = forms.CharField(label="Apellido:")
     email = forms.EmailField(label="Email:")
