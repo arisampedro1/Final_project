@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from users.models import Avatar
+from .forms import UserRegisterForm
 
 
 def login_request(request):
