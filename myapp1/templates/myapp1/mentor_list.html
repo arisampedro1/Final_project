@@ -13,7 +13,7 @@
             <div class="list-group">
                 {% for mentor in mentores %}
                 <div class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="{% url 'mentor_detail' mentor.pk %}" class="btn btn-link">{{ mentor.nombre }}</a>
+                    <a href="{% url 'mentor_detail' mentor.pk %}" class="btn btn-link">Mentor: {{ mentor.nombre }}</a>
                     <div>
                         <a class="btn btn-warning btn-sm mx-1" href="{% url 'mentor_update' mentor.pk %}">Editar</a>
                         <a class="btn btn-danger btn-sm" href="{% url 'mentor_delete' mentor.pk %}">Eliminar</a>
