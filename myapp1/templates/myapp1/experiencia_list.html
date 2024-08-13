@@ -1,15 +1,14 @@
 {% extends "myapp1/base.html" %}
 
+
+{% load static %}
+
 {% load static %}
 
 {% block title %}Experiencia{% endblock %}
 
 {% block content %}
 <div class="container d-flex flex-column justify-content-center" style="min-height: 80vh;">
-    <!-- Sección de Imagen -->
-    <div class="text-center mb-4">
-        <img src="{% static 'myapp1/assets/img/ari3.jpg' %}" alt="Descripción de la imagen" class="img-fluid rounded" />
-    </div>
     <div class="text-center mb-4">
         <h1 class="my-4">Lista de Experiencias</h1>
         <a class="btn btn-primary mt-3" href="{% url 'experiencia_create' %}">Crear Nueva Experiencia</a>
