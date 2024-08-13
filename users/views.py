@@ -31,7 +31,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('Login')  # Redirige al login después del registro exitoso
+            return redirect('Login')  
         else:
             msg_register = "Error en los datos ingresados"
     else:
