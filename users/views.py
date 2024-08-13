@@ -26,17 +26,17 @@ def login_request(request):
         form = AuthenticationForm()
     return render(request, "users/login.html", {"form": form, "msg_login": msg_login})
 
-def register(request):
+def register(request): 
     msg_register = ""
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save() 
+            form.save()  
             return redirect('Login')  
         else:
             msg_register = "Error en los datos ingresados"
     else:
-        form = UserRegisterForm()
+        form = UserCreationForm()
     return render(request, "users/registro.html", {"form": form, "msg_register": msg_register})
 
 
