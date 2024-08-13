@@ -7,7 +7,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from users.models import Avatar
-from .forms import UserRegisterForm
 
 
 def login_request(request):
@@ -20,7 +19,7 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('Inicio')  # Redirige a la vista de inicio
+                return redirect('Inicio')  
         msg_login = "Usuario o contraseña incorrectos"
     else:
         form = AuthenticationForm()
@@ -31,12 +30,13 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()  
-            return redirect('Login')  
+            form.save()
+            return redirect('Login') 
         else:
             msg_register = "Error en los datos ingresados"
     else:
         form = UserCreationForm()
+
     return render(request, "users/registro.html", {"form": form, "msg_register": msg_register})
 
 
