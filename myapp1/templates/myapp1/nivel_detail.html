@@ -11,11 +11,7 @@
                 <div class="card-body text-center">
                     <!-- Título de la tarjeta -->
                     <h1 class="card-title mb-4">Detalles del Nivel</h1>
-
-                    <!-- Nombre del nivel -->
                     <h2 class="mb-4">{{ nivel.nombre }}</h2>
-
-                    <!-- Descripción del nivel -->
                     <p class="card-text mb-4">
                         <strong>Description:</strong>
                         {% if nivel.descripcion %}
@@ -24,8 +20,6 @@
                         No description provided.
                         {% endif %}
                     </p>
-
-                    <!-- Botones de acción -->
                     <div class="d-flex justify-content-center">
                         <a class="btn btn-primary mx-2" href="{% url 'nivel_update' nivel.pk %}">Edit</a>
                         <a class="btn btn-secondary mx-2" href="{% url 'nivel_list' %}">Back to List</a>
