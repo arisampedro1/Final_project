@@ -18,8 +18,8 @@ Este proyecto final consiste en una aplicación web desarrollada en Django para 
 
 ## Pasos para la Instalación y Configuración
 
-1. **Clonar el Repositorio:** `git clone <https://github.com/LeandroRomero469/Projecto_final.git>`
-2. **Acceder al Directorio del Proyecto:** `cd projecto_final`
+1. **Clonar el Repositorio:** `git clone https://github.com/arisampedro1/Final_project.git
+2. **Acceder al Directorio del Proyecto:** `cd final_project
 3. **Crear e Instalar el Entorno Virtual:**
 
 pip install pipenv
@@ -27,7 +27,7 @@ pipenv shell para abrir entorno virtual con version actualizada del usuario
 
 4. **Instalar Dependencias:** `pip install -r requirements.txt`
 5. **Realizar Migraciones:** `python manage.py migrate`
-6. **Iniciar el Servidor:** Dentro del directorio `projecto_final`, ejecutar `python manage.py runserver`
+6. **Iniciar el Servidor:** Dentro del directorio `final_project`, ejecutar `python manage.py runserver`
 
 
 ## Contribuciones del Equipo (Colaboración Equitativa)
@@ -37,6 +37,6 @@ Todos los miembros del equipo han trabajado conjuntamente en todas las fases del
 Nuestro equipo de tres miembros trabajó en conjunto para llevar a cabo este proyecto, asimismo cada uno aportó habilidades y conocimientos existentes e en diferentes partes:
 
 - **Leandro:** Diseñó y desarrolló la interfaz de usuario, implementando funcionalidades clave como la gestión de usuarios y la incorporación de avatares.
-- **Ariana:** Mejoró la usabilidad de la página principal y optimizó la función de búsqueda, mejorando significativamente la experiencia del usuario.
+- **Ariana:** Mejoró la usabilidad de la página principal, generó una vista más creativa y optimizó la función de búsqueda, mejorando significativamente la experiencia del usuario.
 - **Rocío:** Fue responsable de la configuración y lógica inicial del proyecto, la creación y configuración de la aplicación "Myapp1" y la elaboración de la documentación técnica.
 
