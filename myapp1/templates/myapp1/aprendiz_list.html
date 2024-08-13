@@ -1,9 +1,15 @@
 {% extends "myapp1/base.html" %}
 
-{% block title %}Aprendices{% endblock %}
+{% load static %}
+
+{% block title %}Aprendiz{% endblock %}
 
 {% block content %}
 <div class="container d-flex flex-column justify-content-center" style="min-height: 80vh;">
+    <!-- Sección de Imagen -->
+    <div class="text-center mb-4">
+        <img src="{% static 'myapp1/assets/img/ari.jpg' %}" alt="Descripción de la imagen" class="img-fluid rounded" />
+    </div>
     <div class="text-center mb-4">
         <h1>Lista de Aprendices</h1>
         <a class="btn btn-primary mt-3" href="{% url 'aprendiz_create' %}">Crear Nuevo Aprendiz</a>

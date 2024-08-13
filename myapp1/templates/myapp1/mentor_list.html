@@ -1,10 +1,15 @@
 {% extends "myapp1/base.html" %}
 
-{% block title %}Mentores{% endblock %}
+{% load static %}
+
+{% block title %}Mentor{% endblock %}
 
 {% block content %}
-<div class="container my-1">
-    <div class="row min-vh-100 justify-content-center align-items-center">
+<div class="container d-flex flex-column justify-content-center" style="min-height: 80vh;">
+    <!-- Sección de Imagen -->
+    <div class="text-center mb-4">
+        <img src="{% static 'myapp1/assets/img/ari2.jpg' %}" alt="Descripción de la imagen" class="img-fluid rounded" />
+    </div>
         <div class="col-md-10 col-lg-8">
             <h1 class="my-4 text-center">Lista de Mentores</h1>
             <div class="text-center mb-4">
